@@ -4,9 +4,27 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import logo192 from './assets/logo192.png';
+
+// import { Welcome, Greeting, PI } from './component/Welcome';
+// import Component from './component/Welcome';
+import Component, { Welcome, Greeting, PI } from './component/Welcome';
+// import * as W from './component/Welcome';
+
+function App1() {
+  return (
+    <div>
+      <img src="https://picsum/100/100" />
+      <Welcome />
+      <Greeting />
+      <Component />
+    </div>
+  );
+}
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App1 />
   </React.StrictMode>,
   document.getElementById('root')
 );
