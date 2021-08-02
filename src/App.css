@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  margin: 3rem;
+}
+
+button {
+  margin-right: 1rem;
+}
+
+span {
+  margin-right: 1rem;
+}
