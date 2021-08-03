@@ -87,29 +87,161 @@ function App() {
   //   </div>
   // );
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('1234');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('1234');
 
-  const handleClickClearBtn = () => {
-    setEmail('');
-    setPassword('');
-  };
+  // const handleClickClearBtn = () => {
+  //   setEmail('');
+  //   setPassword('');
+  // };
 
+  // return (
+  //   <form>
+  //     <div>
+  //       <label>Email : </label>
+  //       <input type="text" value={email} onChange={event => setEmail(event.target.value)} />
+  //     </div>
+  //     <div>
+  //       <label>Password: </label>
+  //       <input type="text" value={password} onChange={event => setPassword(event.target.value)} />
+  //     </div>
+  //     <button type="button" onClick={handleClickClearBtn}>
+  //       Clear
+  //     </button>
+  //   </form>
+  // );
+
+  // Lab 7.5
+  // const [phoneNumber, setPhoneNumber] = useState('');
+  // const [error, setError] = useState('');
+
+  // const handleClickCheckBtn = () => {
+  //   if (phoneNumber === '') {
+  //     setError('Phone number is required');
+  //   } else if (isNaN(phoneNumber)) {
+  //     setError('Invalid phone number format');
+  //   } else if (phoneNumber.length !== 10) {
+  //     setError('Must be 10 length long');
+  //   } else {
+  //     setError('');
+  //     alert('Valid number');
+  //   }
+  // };
+
+  // const handleChangePhoneNumber = event => {
+  //   const newValue = event.target.value;
+  //   if (newValue === '') {
+  //     setError('Phone number is required');
+  //   } else if (isNaN(newValue)) {
+  //     setError('Invalid phone number format');
+  //   } else if (newValue.length !== 10) {
+  //     setError('Must be 10 length long');
+  //   } else {
+  //     setError('');
+  //   }
+  //   setPhoneNumber(newValue);
+  // };
+
+  // const errorMessage = error ? <span style={{ color: 'red' }}>{error}</span> : null;
+  // const style = error ? { borderColor: 'red', color: 'red' } : {};
+
+  // return (
+  //   <div>
+  //     <div>
+  //       <input
+  //         placeholder="Phone Number"
+  //         value={phoneNumber}
+  //         // style={error === '' ? {} : { borderColor: 'red', color: 'red' }}
+  //         style={style}
+  //         onChange={handleChangePhoneNumber}
+  //       />
+  //       <button onClick={handleClickCheckBtn}>Check</button>
+  //     </div>
+  //     {/* <span style={{ color: 'red' }}>{error}</span> */}
+  //     {errorMessage}
+  //   </div>
+  // );
+
+  // const [state, setState] = useState({
+  //   error: '',
+  //   phoneNumber: ''
+  // });
+
+  // const handleChangePhoneNumber = e => {
+  //   // Wrong !!! Don't do this
+  //   // state.phoneNumber = e.target.value;
+  //   // setState(state)
+  //   // setState({ phoneNumber: e.target.value });
+
+  //   // Correct#1
+  //   // const newState = { ...state };
+  //   // newState.phoneNumber = e.target.value;
+  //   // setState(newState);
+
+  //   // Correct#2
+  //   setState({ ...state, phoneNumber: e.target.value });
+  // };
+
+  // const handleClickCheckBtn = () => {
+  //   if (state.phoneNumber === '') {
+  //     setState({ ...state, error: 'Phone number is required' });
+  //   } else if (isNaN(state.phoneNumber)) {
+  //     setState({ ...state, error: 'Invalid phone number format' });
+  //   } else if (state.phoneNumber.length !== 10) {
+  //     setState({ ...state, error: 'Must be 10 length long' });
+  //   } else {
+  //     setState({ ...state, error: '' });
+  //     alert('Valid phone number');
+  //   }
+  // };
+
+  // const style = state.error ? { borderColor: 'red', color: 'red' } : {};
+  // const errorMessage = state.error ? <span style={{ color: 'red' }}>{state.error}</span> : null;
+
+  // return (
+  //   <div>
+  //     <div>
+  //       <input
+  //         placeholder="Phone Number"
+  //         value={state.phoneNumber}
+  //         // style={error === '' ? {} : { borderColor: 'red', color: 'red' }}
+  //         style={style}
+  //         onChange={handleChangePhoneNumber}
+  //       />
+  //       <button onClick={handleClickCheckBtn}>Check</button>
+  //     </div>
+  //     {/* <span style={{ color: 'red' }}>{error}</span> */}
+  //     {errorMessage}
+  //   </div>
+  // );
+
+  // const [show, setShow] = useState(true);
+  // const render = show ? <h1>Text</h1> : null;
+  // return (
+  //   <div>
+  //     <button onClick={() => setShow(false)}>Hide me</button>
+  //     {render}
+  //   </div>
+  // );
+
+  const [error, setError] = useState('Phone number is required');
+  const errorMessage = error ? <span style={{ color: 'red' }}>{error}</span> : null;
   return (
-    <form>
-      <div>
-        <label>Email : </label>
-        <input type="text" value={email} onChange={event => setEmail(event.target.value)} />
-      </div>
-      <div>
-        <label>Password: </label>
-        <input type="text" value={password} onChange={event => setPassword(event.target.value)} />
-      </div>
-      <button type="button" onClick={handleClickClearBtn}>
-        Clear
-      </button>
-    </form>
+    <div>
+      {/* {errorMessage} */}
+      {/* {error && <span style={{ color: 'red' }}>{error}</span>} */}
+      <ErrorMessage error={error} />
+    </div>
   );
+
+  // const [isLogged, setIsLogged] = useState(true);
+
+  // return <div>{isLogged ? <h1>Welcome Back !!!</h1> : <h1>Welcome Guest</h1>}</div>;
+}
+
+function ErrorMessage(props) {
+  if (!props.error) return null;
+  return <span style={{ color: 'red' }}>{props.error}</span>;
 }
 
 export default App;
