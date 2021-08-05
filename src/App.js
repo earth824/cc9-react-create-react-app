@@ -214,8 +214,8 @@ function App() {
   //   return <span style={{ color: 'red' }}>{props.error}</span>;
   // }
 
-  const arr = [2, 6, 7, 7];
-  const render = arr.map((item, index) => <li key={index}>{item}</li>);
+  // const arr = [2, 6, 7, 7];
+  // const render = arr.map((item, index) => <li key={index}>{item}</li>);
   // [
   //   <li>2</li>,
   //   <li>6</li>,
@@ -224,25 +224,102 @@ function App() {
 
   // return <ul>{render}</ul>;
 
-  const products = [
+  // const products = [
+  //   {
+  //     id: 'f125467e',
+  //     name: 'Coke',
+  //     image: 'https://cloudinar/ ......'
+  //   },
+  //   {
+  //     id: 'f23456767e',
+  //     name: 'Pepsi',
+  //     image: 'https://cloudina/...'
+  //   }
+  // ];
+
+  // return (
+  //   <ul>
+  //     {products.map(item => (
+  //       <li>{item.name}</li>
+  //     ))}
+  //   </ul>
+  // );
+
+  // Lab 8.1
+  // const friends = ['Bee', 'Team', 'Tang', 'Ohm', 'Net'];
+  // return (
+  //   <ul>
+  //     {friends.map((item, index) => (
+  //       <li key={index}>{item}</li>
+  //     ))}
+  //   </ul>
+  // );
+
+  // Lab 8.2
+  const posts = [
     {
-      id: 'f125467e',
-      name: 'Coke',
-      image: 'https://cloudinar/ ......'
+      id: 1,
+      message: 'Hello monday',
+      author: 'Jack',
+      date: '29 Jan 2021 10.35AM'
     },
     {
-      id: 'f23456767e',
-      name: 'Pepsi',
-      image: 'https://cloudina/...'
+      id: 2,
+      message: 'Its funny',
+      author: 'Bill',
+      date: '04 Feb 2021 09.12PM'
+    },
+    {
+      id: 3,
+      message: 'Hard day',
+      author: 'Jill',
+      date: '05 Aug 2021 02.05PM'
     }
   ];
 
+  // return (
+  //   <ul>
+  //     {posts.map(item => (
+  //       <li key={item.id}>
+  //         {item.message} {item.author} {item.date}
+  //       </li>
+  //     ))}
+  //   </ul>
+  // );
+
+  // return (
+  //   <>
+  //     {posts.map(item => (
+  //       <div key={item.id} style={{ border: '1px solid black', padding: '1rem', marginBottom: '1rem' }}>
+  //         <h2>{item.message}</h2>
+  //         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+  //           <span>Author: {item.author}</span>
+  //           <span>{item.date}</span>
+  //         </div>
+  //       </div>
+  //     ))}
+  //   </>
+  // );
+
   return (
-    <ul>
-      {products.map(item => (
-        <li>{item.name}</li>
+    <>
+      {posts.map(item => (
+        <Post key={item.id} post={item} />
       ))}
-    </ul>
+    </>
+  );
+}
+
+function Post(props) {
+  // function Post({ post: { message, author, date } }) {
+  return (
+    <div style={{ border: '1px solid black', padding: '1rem', marginBottom: '1rem' }}>
+      <h2>{props.post.message}</h2>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <span>Author: {props.post.author}</span>
+        <span>{props.post.date}</span>
+      </div>
+    </div>
   );
 }
 
