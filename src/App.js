@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 function App() {
   // Lab 7.1
@@ -21,7 +21,6 @@ function App() {
   //     Click to hide me
   //   </button>
   // );
-
   // Lab 7.2
   // const [show, setShow] = useState(true);
   // const render = show ? <h1>Text</h1> : null;
@@ -31,24 +30,20 @@ function App() {
   //     {render}
   //   </div>
   // );
-
   // Lab 7.3
   // const [textbtn, setTextbtn] = useState('Hide');
   // const [text, setText] = useState('flex');
-
   // const afterClick = e => {
   //   // if (textbtn == 'Hide') {
   //   //   setTextbtn(textbtn => 'Show');
   //   // } else if (textbtn == 'Show') {
   //   //   setTextbtn(textbtn => 'Hide');
   //   // }
-
   //   // if (textbtn == 'Hide') {
   //   //   setText(text => 'none');
   //   // } else {
   //   //   setText(text => 'flex');
   //   // }
-
   //   if (textbtn === 'Hide') {
   //     setTextbtn('Show');
   //     setText('none');
@@ -57,26 +52,20 @@ function App() {
   //     setText('flex');
   //   }
   // };
-
   // const handleClickButton = () => {};
-
   // const onClickButtonHandler = () => {};
-
   // return (
   //   <>
   //     <button onClick={afterClick}>{textbtn}</button>
   //     <p style={{ display: text }}>Lorem ipsum dolar sit.</p>
   //   </>
   // );
-
   // Lab7.4
   // const [num, setNum] = useState('');
   // const convert = event => {
   //   setNum(event.target.value * 35);
   // };
-
   // const handleNumChange = e => setNum(e.target.value * 35);
-
   // return (
   //   <div>
   //     <span>Enter Dollar</span>
@@ -86,15 +75,12 @@ function App() {
   //     </div>
   //   </div>
   // );
-
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('1234');
-
   // const handleClickClearBtn = () => {
   //   setEmail('');
   //   setPassword('');
   // };
-
   // return (
   //   <form>
   //     <div>
@@ -110,11 +96,9 @@ function App() {
   //     </button>
   //   </form>
   // );
-
   // Lab 7.5
   // const [phoneNumber, setPhoneNumber] = useState('');
   // const [error, setError] = useState('');
-
   // const handleClickCheckBtn = () => {
   //   if (phoneNumber === '') {
   //     setError('Phone number is required');
@@ -127,7 +111,6 @@ function App() {
   //     alert('Valid number');
   //   }
   // };
-
   // const handleChangePhoneNumber = event => {
   //   const newValue = event.target.value;
   //   if (newValue === '') {
@@ -141,10 +124,8 @@ function App() {
   //   }
   //   setPhoneNumber(newValue);
   // };
-
   // const errorMessage = error ? <span style={{ color: 'red' }}>{error}</span> : null;
   // const style = error ? { borderColor: 'red', color: 'red' } : {};
-
   // return (
   //   <div>
   //     <div>
@@ -161,27 +142,22 @@ function App() {
   //     {errorMessage}
   //   </div>
   // );
-
   // const [state, setState] = useState({
   //   error: '',
   //   phoneNumber: ''
   // });
-
   // const handleChangePhoneNumber = e => {
   //   // Wrong !!! Don't do this
   //   // state.phoneNumber = e.target.value;
   //   // setState(state)
   //   // setState({ phoneNumber: e.target.value });
-
   //   // Correct#1
   //   // const newState = { ...state };
   //   // newState.phoneNumber = e.target.value;
   //   // setState(newState);
-
   //   // Correct#2
   //   setState({ ...state, phoneNumber: e.target.value });
   // };
-
   // const handleClickCheckBtn = () => {
   //   if (state.phoneNumber === '') {
   //     setState({ ...state, error: 'Phone number is required' });
@@ -194,10 +170,8 @@ function App() {
   //     alert('Valid phone number');
   //   }
   // };
-
   // const style = state.error ? { borderColor: 'red', color: 'red' } : {};
   // const errorMessage = state.error ? <span style={{ color: 'red' }}>{state.error}</span> : null;
-
   // return (
   //   <div>
   //     <div>
@@ -214,7 +188,6 @@ function App() {
   //     {errorMessage}
   //   </div>
   // );
-
   // const [show, setShow] = useState(true);
   // const render = show ? <h1>Text</h1> : null;
   // return (
@@ -223,25 +196,54 @@ function App() {
   //     {render}
   //   </div>
   // );
-
-  const [error, setError] = useState('Phone number is required');
-  const errorMessage = error ? <span style={{ color: 'red' }}>{error}</span> : null;
-  return (
-    <div>
-      {/* {errorMessage} */}
-      {/* {error && <span style={{ color: 'red' }}>{error}</span>} */}
-      <ErrorMessage error={error} />
-    </div>
-  );
-
+  // const [error, setError] = useState('Phone number is required');
+  // const errorMessage = error ? <span style={{ color: 'red' }}>{error}</span> : null;
+  // return (
+  //   <div>
+  //     {/* {errorMessage} */}
+  //     {/* {error && <span style={{ color: 'red' }}>{error}</span>} */}
+  //     <ErrorMessage error={error} />
+  //   </div>
+  // );
   // const [isLogged, setIsLogged] = useState(true);
-
   // return <div>{isLogged ? <h1>Welcome Back !!!</h1> : <h1>Welcome Guest</h1>}</div>;
-}
+  // }
 
-function ErrorMessage(props) {
-  if (!props.error) return null;
-  return <span style={{ color: 'red' }}>{props.error}</span>;
+  // function ErrorMessage(props) {
+  //   if (!props.error) return null;
+  //   return <span style={{ color: 'red' }}>{props.error}</span>;
+  // }
+
+  const arr = [2, 6, 7, 7];
+  const render = arr.map((item, index) => <li key={index}>{item}</li>);
+  // [
+  //   <li>2</li>,
+  //   <li>6</li>,
+  //   <li>7</li>,
+  // ]
+
+  // return <ul>{render}</ul>;
+
+  const products = [
+    {
+      id: 'f125467e',
+      name: 'Coke',
+      image: 'https://cloudinar/ ......'
+    },
+    {
+      id: 'f23456767e',
+      name: 'Pepsi',
+      image: 'https://cloudina/...'
+    }
+  ];
+
+  return (
+    <ul>
+      {products.map(item => (
+        <li>{item.name}</li>
+      ))}
+    </ul>
+  );
 }
 
 export default App;
