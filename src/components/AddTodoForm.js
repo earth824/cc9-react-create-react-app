@@ -25,11 +25,11 @@ function AddTodoForm(props) {
   };
 
   return (
-    <>
+    <div style={{ marginTop: '1rem' }}>
       <input type="text" placeholder="Enter new todo" value={newTodo} onChange={handleChangeNewTodo} />
       <button onClick={handleClickAdd}>Add</button>
       {error && <p style={{ fontSize: '0.75rem', margin: 0, padding: 0, color: 'red' }}>{error}</p>}
-    </>
+    </div>
   );
 }
 

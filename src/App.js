@@ -1,29 +1,35 @@
 import './App.css';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import AddTodoForm from './components/AddTodoForm';
 import Todo from './components/Todo';
+import EditTodoForm from './components/EditTodoForm';
+import SearchForm from './components/SearchForm';
 
 function App() {
   const [todos, setTodos] = useState([
-    { id: 1, name: 'Travel' },
-    { id: 2, name: 'Shopping' },
-    { id: 6, name: 'Shopping' },
-    { id: 7, name: 'Shopping' },
-    { id: 9, name: 'Shopping' },
-    { id: 12, name: 'Shopping' },
-    { id: 17, name: 'Shopping' }
+    { id: uuidv4(), name: 'Travel' },
+    { id: uuidv4(), name: 'Shopping' },
+    { id: uuidv4(), name: 'Watching a movie' },
+    { id: uuidv4(), name: 'Travel' }
   ]);
+  const [isEditting, setIsEditing] = useState(false);
+  const [edittingItem, setEdittingItem] = useState({});
+  const [filteredText, setFilteredText] = useState('');
 
-  // todos[0];
-  // todos[1];
-  // todos[todos.length - 1].id + 1; // 18
-  // todos[0].id = 1;
+  const searchTodo = searchText => {
+    setFilteredText(searchText);
+  };
 
-  console.log(todos);
+  const clearSearch = () => {
+    setFilteredText('');
+  };
+
+  const showTodos = todos.filter(item => item.name.toLowerCase().includes(filteredText.toLowerCase()));
 
   const addTodo = newTodo => {
     const newItem = {
-      id: todos.length > 0 ? todos[todos.length - 1].id + 1 : 1,
+      id: uuidv4(),
       name: newTodo
     };
 
@@ -31,9 +37,43 @@ function App() {
     setTodos(newTodos);
   };
 
+  const editTodo = (id, newName) => {
+    const idx = todos.findIndex(item => item.id === id);
+    const newTodos = [...todos];
+    newTodos[idx].name = newName;
+    setTodos(newTodos);
+    setIsEditing(false);
+  };
+
+  const deleteTodo = id => {
+    const idx = todos.findIndex(item => item.id === id);
+    const newTodos = [...todos];
+    newTodos.splice(idx, 1);
+    setTodos(newTodos);
+  };
+
+  const triggerEdit = id => {
+    setIsEditing(true);
+    const idx = todos.findIndex(item => item.id === id);
+    setEdittingItem(todos[idx]);
+  };
+
+  const cancelEditForm = () => {
+    setIsEditing(false);
+  };
+
   return (
     <>
-      <AddTodoForm addTodo={addTodo} />
+      <SearchForm searchTodo={searchTodo} clearSearch={clearSearch} />
+      {/* <AddTodoForm addTodo={addTodo} />
+      {isEditting && <EditTodoForm cancelEditForm={cancelEditForm} edittingItem={edittingItem} />} */}
+
+      {isEditting === true ? (
+        <EditTodoForm editTodo={editTodo} cancelEditForm={cancelEditForm} edittingItem={edittingItem} />
+      ) : (
+        <AddTodoForm addTodo={addTodo} />
+      )}
+
       <ul
         style={{
           listStyle: 'none',
@@ -42,8 +82,8 @@ function App() {
           marginTop: '1rem'
         }}
       >
-        {todos.map(item => (
-          <Todo key={item.id} todo={item} />
+        {showTodos.map(item => (
+          <Todo key={item.id} todo={item} deleteTodo={deleteTodo} triggerEdit={triggerEdit} />
         ))}
       </ul>
     </>
