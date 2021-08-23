@@ -3,6 +3,7 @@ import { useReducer, useState } from 'react';
 import Text from './components/Text';
 import Button from './components/Button';
 import { CountProvider } from './contexts/CountContext';
+import { CountContext } from './contexts/CountContext';
 
 // Action : INCREMENT, DECREMENT, RESET, STEP
 // dispatch({ type: 'INCREMENT' });
@@ -90,5 +91,23 @@ function App() {
     </CountProvider>
   );
 }
+
+// function App() {
+//   const [count, setCount] = useState(0);
+//   return (
+//     <CountContext.Provider value={{ count: count, setCount: setCount }}>
+//       <div style={{ padding: '4rem' }}>
+//         <Text />
+//         <Button />
+//       </div>
+//     </CountContext.Provider>
+//   );
+// }
+
+// function CountProvider(props) {
+//   // const [count, setCount] = useState(0);
+//   const [state, dispatch] = useReducer(countReducer, INITIAL_COUNT);
+//   return <CountContext.Provider value={{ state: state, dispatch: dispatch }}>{props.children}</CountContext.Provider>;
+// }
 
 export default App;

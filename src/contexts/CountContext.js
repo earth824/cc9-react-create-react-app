@@ -23,12 +23,14 @@ function CountProvider(props) {
   return <CountContext.Provider value={{ state: state, dispatch: dispatch }}>{props.children}</CountContext.Provider>;
 }
 
-function useCount() {
-  const context = useContext(CountContext);
-  if (context === undefined) {
-    throw new Error('useCount must be used within CountProvider');
-  }
-  return context;
-}
+// function useCount() {
+//   const context = useContext(CountContext);
+//   if (context === undefined) {
+//     throw new Error('useCount must be used within CountProvider');
+//   }
+//   return context;
+// }
 
-export { CountProvider, useCount };
+export { CountProvider, CountContext };
+
+// export { CountContext };
